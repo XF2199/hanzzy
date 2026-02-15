@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HANZZ TKA TRYOUT - SOAL UNIK</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        /* (CSS sama seperti sebelumnya, tidak diubah) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        /* LOGIN PAGE */
+        .login-container {
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            padding: 50px 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .welcome-box {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 30px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(37,99,235,0.3);
+        }
+        .login-container h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .login-container h1 span {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .login-container .sub {
+            color: #64748b;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .token-box {
+            background: #f1f5f9;
+            border-radius: 30px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px dashed #94a3b8;
+        }
+        .token-label {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .token-value {
+            font-family: monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            color: #2563eb;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 60px;
+            border: 2px solid #cbd5e1;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        .input-group {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            outline: none;
+            transition: 0.15s;
+            background: white;
+        }
+        .input-group input:focus, .input-group select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+        }
+        .gender-group {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .gender-group label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: #334155;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .gender-group input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #2563eb;
+        }
+        .tanggal-lahir {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .tanggal-lahir select {
+            flex: 1;
+            min-width: 100px;
+        }
+        .btn-login {
+            background: #2563eb;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 70px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #1e40af;
+            transition: 0.1s;
+            margin-top: 15px;
+        }
+        .btn-login:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #1e40af;
+        }
+        .error-message {
+            color: #ef4444;
+            font-size: 1rem;
+            margin-top: 15px;
+            min-height: 20px;
+            text-align: center;
+        }
+        /* HOME PAGE */
+        .home-container {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 50px 40px;
+            text-align: center;
+            display: none;
+        }
+        .home-container h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        .home-container h1 span {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .home-container .sub {
+            color: #64748b;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 25px;
+        }
+        .card-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .home-card {
+            background: #f8fafc;
+            width: 280px;
+            padding: 40px 25px;
+            border-radius: 28px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            cursor: pointer;
+            transition: all 0.25s;
+            border: 2px solid transparent;
+        }
+        .home-card:hover {
+            border-color: #2563eb;
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(37,99,235,0.1);
+        }
+        .home-card i {
+            font-size: 4rem;
+            color: #2563eb;
+            margin-bottom: 20px;
+        }
+        .home-card h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #0f172a;
+        }
+        .home-card p {
+            color: #475569;
+            font-size: 1.1rem;
+            margin-top: 12px;
+        }
+        /* MODAL SIAP */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-card {
+            background: white;
+            max-width: 450px;
+            width: 90%;
+            border-radius: 40px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .modal-card i {
+            font-size: 4rem;
+            color: #2563eb;
+            margin-bottom: 20px;
+        }
+        .modal-card h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+        .modal-card p {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 30px;
+        }
+        .modal-btn {
+            background: #10b981;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #059669;
+            transition: 0.1s;
+            width: 100%;
+        }
+        .modal-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #059669;
+        }
+        /* MODAL SELESAI */
+        #modalSelesai .modal-card i {
+            color: #f59e0b;
+        }
+        #modalSelesai .modal-btn {
+            background: #f59e0b;
+            box-shadow: 0 6px 0 #d97706;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .modal-actions .modal-btn {
+            width: auto;
+            padding: 14px 30px;
+            font-size: 1.3rem;
+        }
+        .modal-actions .modal-btn.secondary {
+            background: #94a3b8;
+            box-shadow: 0 6px 0 #64748b;
+        }
+        /* SOAL PAGE */
+        .soal-page {
+            display: none;
+        }
+        .header-card {
+            background: white;
+            border-radius: 24px;
+            padding: 22px 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 10px solid #2563eb;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .header-card h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header-card h2 i {
+            color: #2563eb;
+            font-size: 2.2rem;
+        }
+        .user-info {
+            background: #f1f5f9;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            color: #1e293b;
+            border: 2px solid #cbd5e1;
+        }
+        .timer {
+            background: #f1f5f9;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0f172a;
+            border: 2px solid #cbd5e1;
+            letter-spacing: 1px;
+        }
+        .soal-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .soal-card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid #e9eef3;
+        }
+        .soal-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .soal-nomor {
+            background: #2563eb;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 6px 12px rgba(37,99,235,0.25);
+        }
+        .soal-tipe {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .soal-gambar {
+            margin: 15px 0 20px;
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            border: 2px dashed #cbd5e1;
+            color: #334155;
+            font-size: 1.1rem;
+        }
+        .soal-gambar i {
+            font-size: 3.5rem;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        .soal-teks {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #1e293b;
+            margin: 15px 0 25px;
+            white-space: pre-line;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 18px;
+            border-left: 6px solid #2563eb;
+        }
+        .opsi {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .opsi-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: #f9fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            padding: 14px 22px;
+            cursor: pointer;
+            transition: 0.15s;
+            font-size: 1.05rem;
+        }
+        .opsi-item:hover {
+            background: #eff6ff;
+            border-color: #2563eb;
+        }
+        .opsi-item input {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+        .opsi-item label {
+            flex: 1;
+            font-size: 1.05rem;
+            cursor: pointer;
+            color: #1e293b;
+            font-weight: 500;
+        }
+        .btn-submit {
+            background: #10b981;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 70px;
+            width: 100%;
+            max-width: 400px;
+            margin: 35px auto 0;
+            display: block;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #059669;
+            transition: 0.1s;
+        }
+        .btn-submit:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #059669;
+        }
+        /* Hasil panel */
+        .hasil-panel {
+            background: white;
+            border-radius: 32px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+        .nilai-box {
+            background: #f1f5f9;
+            padding: 20px 35px;
+            border-radius: 70px;
+            font-size: 2rem;
+            font-weight: 700;
+            display: inline-block;
+            color: #0f172a;
+            border: 2px solid #cbd5e1;
+        }
+        .key-area {
+            background: #f1f5f9;
+            border-radius: 35px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 2px dashed #94a3b8;
+        }
+        .key-string {
+            font-family: monospace;
+            font-size: 2.2rem;
+            background: white;
+            padding: 12px 30px;
+            border-radius: 60px;
+            display: inline-block;
+            letter-spacing: 4px;
+            border: 2px solid #94a3b8;
+            color: #0f172a;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        .exit-form {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 25px;
+            border-radius: 60px;
+        }
+        .exit-form input {
+            flex: 2;
+            min-width: 250px;
+            background: white;
+            border: 2px solid #cbd5e1;
+            padding: 16px 25px;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            color: #0f172a;
+            text-align: center;
+            font-family: monospace;
+            outline: none;
+        }
+        .exit-form button {
+            flex: 1;
+            background: #ef4444;
+            border: none;
+            padding: 16px 25px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #b91c1c;
+            border: 1px solid #fecaca;
+        }
+        .exit-form button:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #b91c1c;
+        }
+        .peringatan {
+            color: #475569;
+            font-size: 1rem;
+            margin-top: 20px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #64748b;
+            font-size: 1rem;
+        }
+        .soal-wrapper::-webkit-scrollbar {
+            width: 8px;
+        }
+        .soal-wrapper::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        @media (max-width: 600px) {
+            .login-container { padding: 30px 20px; }
+            .welcome-box { font-size: 1.4rem; padding: 15px; }
+            .token-value { font-size: 1.8rem; letter-spacing: 4px; }
+            .gender-group { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .tanggal-lahir select { min-width: 80px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- HALAMAN LOGIN -->
+    <div id="loginPage" class="login-container">
+        <div class="welcome-box">
+            SELAMAT DATANG DI PORTAL TRYOUT TKA BY HANZZ
+        </div>
+        <h1><span>HANZZ</span> TKA TRYOUT</h1>
+        <div class="sub">Masukkan token dan data diri untuk memulai</div>
+        <div class="token-box">
+            <div class="token-label">Token Akses</div>
+            <div class="token-value" id="tokenDisplay">ABCD12</div>
+        </div>
+        <div class="input-group">
+            <label>Masukkan Token</label>
+            <input type="text" id="tokenInput" placeholder="Salin token di atas" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <label>Nama Lengkap</label>
+            <input type="text" id="namaInput" placeholder="Masukkan nama Anda" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <label>Jenis Kelamin</label>
+            <div class="gender-group">
+                <label><input type="radio" name="gender" value="Laki-laki" checked> Laki-laki</label>
+                <label><input type="radio" name="gender" value="Perempuan"> Perempuan</label>
+            </div>
+        </div>
+        <div class="input-group">
+            <label>Tanggal Lahir</label>
+            <div class="tanggal-lahir">
+                <select id="tgl" required>
+                    <option value="">Tanggal</option>
+                    <!-- diisi js -->
+                </select>
+                <select id="bln" required>
+                    <option value="">Bulan</option>
+                    <!-- diisi js -->
+                </select>
+                <select id="thn" required>
+                    <option value="">Tahun</option>
+                    <!-- diisi js -->
+                </select>
+            </div>
+        </div>
+        <button class="btn-login" id="btnLogin">MASUK</button>
+        <div class="error-message" id="loginError"></div>
+    </div>
+
+    <!-- HALAMAN HOME (setelah login) -->
+    <div id="homePage" class="home-container">
+        <h1><span>HANZZ</span> TKA TRYOUT</h1>
+        <div class="sub">Selamat datang, <span id="namaDisplay">User</span>! Pilih mata pelajaran untuk memulai ujian (durasi 90 menit)</div>
+        <div class="card-grid">
+            <div class="home-card" id="btnIndo">
+                <i class="fas fa-book-open"></i>
+                <h2>B.INDO</h2>
+                <p>30 soal • PG, PGK, B/S</p>
+            </div>
+            <div class="home-card" id="btnMat">
+                <i class="fas fa-calculator"></i>
+                <h2>MATEMATIKA</h2>
+                <p>30 soal • PG, PGK, B/S</p>
+            </div>
+        </div>
+        <footer>© HANZZ SECURE • pilih mapel untuk memulai</footer>
+    </div>
+
+    <!-- MODAL KONFIRMASI SIAP UJIAN -->
+    <div id="modalSiap" class="modal-overlay">
+        <div class="modal-card">
+            <i class="fas fa-praying-hands"></i>
+            <h3>Apakah Anda Siap?</h3>
+            <p>Berdoa terlebih dahulu sebelum memulai ujian. Setelah tombol ditekan, browser akan terkunci dan masuk mode fullscreen. Jawaban akan direset jika Anda keluar paksa.</p>
+            <button class="modal-btn" id="btnMulaiUjian">🔒 Mulai & Kunci Browser</button>
+        </div>
+    </div>
+
+    <!-- MODAL KONFIRMASI SELESAI TRYOUT -->
+    <div id="modalSelesai" class="modal-overlay">
+        <div class="modal-card">
+            <i class="fas fa-question-circle"></i>
+            <h3>Yakin ingin menyelesaikan?</h3>
+            <p>Pastikan semua jawaban sudah final. Anda tidak dapat mengubahnya setelah ini.</p>
+            <div class="modal-actions">
+                <button class="modal-btn secondary" id="batalSelesai">Batal</button>
+                <button class="modal-btn" id="konfirmasiSelesai">Ya, Selesai</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HALAMAN SOAL B.INDONESIA -->
+    <div id="indoPage" class="soal-page">
+        <div class="header-card">
+            <h2><i class="fas fa-book-open"></i> Bahasa Indonesia</h2>
+            <div class="user-info" id="indoUser">User</div>
+            <div class="timer" id="indoTimer">01:30:00</div>
+        </div>
+        <div class="soal-wrapper" id="indoSoalContainer"></div>
+        <button class="btn-submit" id="submitIndo">Selesai & Lihat Hasil</button>
+        <div id="indoHasil" class="hasil-panel" style="display: none;"></div>
+    </div>
+
+    <!-- HALAMAN SOAL MATEMATIKA -->
+    <div id="matPage" class="soal-page">
+        <div class="header-card">
+            <h2><i class="fas fa-calculator"></i> Matematika</h2>
+            <div class="user-info" id="matUser">User</div>
+            <div class="timer" id="matTimer">01:30:00</div>
+        </div>
+        <div class="soal-wrapper" id="matSoalContainer"></div>
+        <button class="btn-submit" id="submitMat">Selesai & Lihat Hasil</button>
+        <div id="matHasil" class="hasil-panel" style="display: none;"></div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // ====================  DATA SOAL BENAR-BENAR BERBEDA (TIDAK ADA YANG SAMA) ====================
+    const soalIndo = [
+        // PG (10 soal)
+        { tipe: 'pg', teks: '(1) Bacalah teks berikut!\n\n"Semangat gotong royong masih terasa kuat di desa Suka Maju. Warga saling membantu saat ada yang mengadakan hajatan atau terkena musibah."\n\nNilai yang terkandung dalam teks tersebut adalah...', opsi: [{teks:'Kekeluargaan',nilai:'A'},{teks:'Individualisme',nilai:'B'},{teks:'Materialisme',nilai:'C'},{teks:'Hedonisme',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-hand-holding-heart" style="font-size:3rem; color:#2563eb;"></i><br>Gotong royong' },
+        { tipe: 'pg', teks: '(2) Cermati kalimat berikut!\n\n"Kemarau panjang menyebabkan sungai-sungai mengering."\n\nMakna kata "kemarau" adalah...', opsi: [{teks:'Musim hujan',nilai:'A'},{teks:'Musim kering',nilai:'B'},{teks:'Musim dingin',nilai:'C'},{teks:'Musim semi',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-sun" style="font-size:3rem; color:#2563eb;"></i><br>Kemarau' },
+        { tipe: 'pg', teks: '(3) Peribahasa "Bagai air di daun talas" memiliki arti...', opsi: [{teks:'Selalu berubah-ubah',nilai:'A'},{teks:'Sangat setia',nilai:'B'},{teks:'Sangat kuat',nilai:'C'},{teks:'Sangat cepat',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-leaf" style="font-size:3rem; color:#2563eb;"></i><br>Daun talas' },
+        { tipe: 'pg', teks: '(4) Bacalah puisi berikut!\n\n"Kutulis surat ini\nSaat hujan gerimis\nRindu ini tak terperi"\n\nSuasana dalam puisi tersebut adalah...', opsi: [{teks:'Gembira',nilai:'A'},{teks:'Sedih',nilai:'B'},{teks:'Marah',nilai:'C'},{teks:'Cemas',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-cloud-rain" style="font-size:3rem; color:#2563eb;"></i><br>Hujan' },
+        { tipe: 'pg', teks: '(5) Kalimat berikut yang menggunakan kata berimbuhan me- dengan tepat adalah...', opsi: [{teks:'Dia mengepel lantai',nilai:'A'},{teks:'Dia menulis surat',nilai:'B'},{teks:'Dia memukul bola',nilai:'C'},{teks:'Semua benar',nilai:'D'}], kunci: 'D', gambar: '<i class="fas fa-pen" style="font-size:3rem; color:#2563eb;"></i><br>Menulis' },
+        { tipe: 'pg', teks: '(6) Sinonim kata "cerdas" adalah...', opsi: [{teks:'Pintar',nilai:'A'},{teks:'Bodoh',nilai:'B'},{teks:'Rajin',nilai:'C'},{teks:'Malas',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-brain" style="font-size:3rem; color:#2563eb;"></i><br>Cerdas' },
+        { tipe: 'pg', teks: '(7) Antonim kata "optimis" adalah...', opsi: [{teks:'Pesimis',nilai:'A'},{teks:'Realistis',nilai:'B'},{teks:'Idealis',nilai:'C'},{teks:'Positif',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-smile" style="font-size:3rem; color:#2563eb;"></i><br>Optimis' },
+        { tipe: 'pg', teks: '(8) "Ibu memasak di dapur." Kalimat tersebut berpola...', opsi: [{teks:'S-P-O',nilai:'A'},{teks:'S-P-K',nilai:'B'},{teks:'S-P-O-K',nilai:'C'},{teks:'S-P',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-utensils" style="font-size:3rem; color:#2563eb;"></i><br>Memasak' },
+        { tipe: 'pg', teks: '(9) Kutipan cerpen: "Dengan langkah gontai, ia memasuki ruangan gelap itu." Latar tempat dalam kutipan tersebut adalah...', opsi: [{teks:'Ruangan',nilai:'A'},{teks:'Luar ruangan',nilai:'B'},{teks:'Halaman',nilai:'C'},{teks:'Pasar',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-door-open" style="font-size:3rem; color:#2563eb;"></i><br>Ruangan' },
+        { tipe: 'pg', teks: '(10) Penulisan huruf kapital yang benar terdapat pada kalimat...', opsi: [{teks:'Tahun baru Islam 1 Muharram',nilai:'A'},{teks:'Hari raya idul fitri',nilai:'B'},{teks:'Kita harus menghormati orang Tua',nilai:'C'},{teks:'Presiden jokowi',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-font" style="font-size:3rem; color:#2563eb;"></i><br>Kapital' },
+        // PGK (10 soal)
+        { tipe: 'pgk', teks: '(11) Manakah yang termasuk unsur intrinsik cerpen? (pilih semua yang benar)', opsi: [{teks:'Tema',nilai:'A'},{teks:'Latar',nilai:'B'},{teks:'Pengarang',nilai:'C'},{teks:'Amanat',nilai:'D'}], kunci: ['A','B','D'], gambar: '<i class="fas fa-book" style="font-size:3rem; color:#2563eb;"></i><br>Cerpen' },
+        { tipe: 'pgk', teks: '(12) Ciri-ciri teks laporan hasil observasi adalah... (pilih semua yang tepat)', opsi: [{teks:'Bersifat objektif',nilai:'A'},{teks:'Mengandung opini',nilai:'B'},{teks:'Disusun sistematis',nilai:'C'},{teks:'Berdasarkan fakta',nilai:'D'}], kunci: ['A','C','D'], gambar: '<i class="fas fa-clipboard-list" style="font-size:3rem; color:#2563eb;"></i><br>Observasi' },
+        { tipe: 'pgk', teks: '(13) Manakah yang termasuk kata kerja material? (pilih semua)', opsi: [{teks:'Membaca',nilai:'A'},{teks:'Memikirkan',nilai:'B'},{teks:'Menulis',nilai:'C'},{teks:'Menyapu',nilai:'D'}], kunci: ['A','C','D'], gambar: '<i class="fas fa-running" style="font-size:3rem; color:#2563eb;"></i><br>Kerja' },
+        { tipe: 'pgk', teks: '(14) Unsur-unsur dalam surat lamaran pekerjaan adalah... (pilih semua)', opsi: [{teks:'Tanggal surat',nilai:'A'},{teks:'Alamat tujuan',nilai:'B'},{teks:'Isi lamaran',nilai:'C'},{teks:'Tanda tangan',nilai:'D'}], kunci: ['A','B','C','D'], gambar: '<i class="fas fa-envelope" style="font-size:3rem; color:#2563eb;"></i><br>Surat' },
+        { tipe: 'pgk', teks: '(15) Konjungsi temporal terdapat dalam kalimat... (pilih semua)', opsi: [{teks:'Ia datang lalu pergi',nilai:'A'},{teks:'Dia membaca sambil menulis',nilai:'B'},{teks:'Karena hujan, acara batal',nilai:'C'},{teks:'Dia pandai tetapi sombong',nilai:'D'}], kunci: ['A','B'], gambar: '<i class="fas fa-clock" style="font-size:3rem; color:#2563eb;"></i><br>Temporal' },
+        { tipe: 'pgk', teks: '(16) Kalimat berikut yang menggunakan ejaan yang benar adalah... (pilih semua)', opsi: [{teks:'Dia pergi ke sekolah',nilai:'A'},{teks:'Mereka bermain di taman',nilai:'B'},{teks:'Ibu membeli sayur di pasar',nilai:'C'},{teks:'Dia menulis puisi indah',nilai:'D'}], kunci: ['A','B','C','D'], gambar: '<i class="fas fa-spell-check" style="font-size:3rem; color:#2563eb;"></i><br>Ejaan' },
+        { tipe: 'pgk', teks: '(17) Manakah yang merupakan jenis puisi lama? (pilih semua)', opsi: [{teks:'Pantun',nilai:'A'},{teks:'Syair',nilai:'B'},{teks:'Gurindam',nilai:'C'},{teks:'Soneta',nilai:'D'}], kunci: ['A','B','C'], gambar: '<i class="fas fa-feather-alt" style="font-size:3rem; color:#2563eb;"></i><br>Puisi' },
+        { tipe: 'pgk', teks: '(18) Ciri-ciri teks eksposisi adalah... (pilih semua)', opsi: [{teks:'Bersifat informatif',nilai:'A'},{teks:'Mengandung argumen',nilai:'B'},{teks:'Bertujuan meyakinkan',nilai:'C'},{teks:'Menggunakan kata persuasif',nilai:'D'}], kunci: ['A','B','C','D'], gambar: '<i class="fas fa-chalkboard-teacher" style="font-size:3rem; color:#2563eb;"></i><br>Eksposisi' },
+        { tipe: 'pgk', teks: '(19) Kata depan yang tepat terdapat pada kalimat... (pilih semua)', opsi: [{teks:'Buku itu di atas meja',nilai:'A'},{teks:'Ia pergi ke pasar',nilai:'B'},{teks:'Dia lahir pada tahun 2000',nilai:'C'},{teks:'Mereka duduk di kursi',nilai:'D'}], kunci: ['A','B','C','D'], gambar: '<i class="fas fa-arrow-right" style="font-size:3rem; color:#2563eb;"></i><br>Kata depan' },
+        { tipe: 'pgk', teks: '(20) Kalimat berikut yang menggunakan konjungsi kausalitas adalah... (pilih semua)', opsi: [{teks:'Dia tidak masuk karena sakit',nilai:'A'},{teks:'Jika hujan, saya tidak pergi',nilai:'B'},{teks:'Akibat banjir, jalan macet',nilai:'C'},{teks:'Dia belajar agar pintar',nilai:'D'}], kunci: ['A','C'], gambar: '<i class="fas fa-link" style="font-size:3rem; color:#2563eb;"></i><br>Sebab-akibat' },
+        // BS (10 soal)
+        { tipe: 'bs', teks: '(21) "Kata "karena" termasuk konjungsi sebab-akibat." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-check" style="font-size:3rem; color:#2563eb;"></i><br>Benar/Salah' },
+        { tipe: 'bs', teks: '(22) "Fabel adalah cerita yang tokoh utamanya manusia." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: false, gambar: '<i class="fas fa-dog" style="font-size:3rem; color:#2563eb;"></i><br>Fabel' },
+        { tipe: 'bs', teks: '(23) "Teks deskripsi bertujuan menggambarkan suatu objek." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-image" style="font-size:3rem; color:#2563eb;"></i><br>Deskripsi' },
+        { tipe: 'bs', teks: '(24) "Imbuhan "ter-" menyatakan makna paling." Contoh: terbaik. Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-star" style="font-size:3rem; color:#2563eb;"></i><br>Imbuhan' },
+        { tipe: 'bs', teks: '(25) "Kalimat aktif transitif adalah kalimat yang tidak memerlukan objek." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: false, gambar: '<i class="fas fa-exchange-alt" style="font-size:3rem; color:#2563eb;"></i><br>Aktif' },
+        { tipe: 'bs', teks: '(26) "Majas personifikasi adalah majas yang membandingkan benda mati seolah-olah hidup." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-smile-wink" style="font-size:3rem; color:#2563eb;"></i><br>Personifikasi' },
+        { tipe: 'bs', teks: '(27) "Kata "di" pada "di rumah" adalah kata depan." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-home" style="font-size:3rem; color:#2563eb;"></i><br>Kata depan' },
+        { tipe: 'bs', teks: '(28) "Cerita rakyat termasuk jenis karya fiksi." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-users" style="font-size:3rem; color:#2563eb;"></i><br>Rakyat' },
+        { tipe: 'bs', teks: '(29) "Teks prosedur kompleks bertujuan untuk menjelaskan langkah-langkah membuat sesuatu." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-list-ol" style="font-size:3rem; color:#2563eb;"></i><br>Prosedur' },
+        { tipe: 'bs', teks: '(30) "Antonim kata "naik" adalah "turun"." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-arrow-up" style="font-size:3rem; color:#2563eb;"></i><br>Naik' },
+    ];
+
+    const soalMat = [
+        // PG (10 soal)
+        { tipe: 'pg', teks: '(1) Hasil dari 12 + 8 × 3 adalah...', opsi: [{teks:'36',nilai:'A'},{teks:'28',nilai:'B'},{teks:'48',nilai:'C'},{teks:'60',nilai:'D'}], kunci: 'B', gambar: '<i class="fas fa-calculator" style="font-size:3rem; color:#2563eb;"></i><br>Hitung' },
+        { tipe: 'pg', teks: '(2) Jika a = 5 dan b = 3, maka nilai a² - b² adalah...', opsi: [{teks:'16',nilai:'A'},{teks:'8',nilai:'B'},{teks:'4',nilai:'C'},{teks:'2',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-square-root-alt" style="font-size:3rem; color:#2563eb;"></i><br>Aljabar' },
+        { tipe: 'pg', teks: '(3) Luas lingkaran dengan jari-jari 7 cm adalah... (π=22/7)', opsi: [{teks:'154 cm²',nilai:'A'},{teks:'144 cm²',nilai:'B'},{teks:'308 cm²',nilai:'C'},{teks:'616 cm²',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-circle" style="font-size:3rem; color:#2563eb;"></i><br>Lingkaran' },
+        { tipe: 'pg', teks: '(4) Sebuah persegi panjang memiliki panjang 10 cm dan lebar 6 cm. Kelilingnya adalah...', opsi: [{teks:'32 cm',nilai:'A'},{teks:'16 cm',nilai:'B'},{teks:'60 cm',nilai:'C'},{teks:'30 cm',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-square" style="font-size:3rem; color:#2563eb;"></i><br>Persegi panjang' },
+        { tipe: 'pg', teks: '(5) Hasil dari √144 + √25 adalah...', opsi: [{teks:'17',nilai:'A'},{teks:'13',nilai:'B'},{teks:'12',nilai:'C'},{teks:'5',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-square-root-alt" style="font-size:3rem; color:#2563eb;"></i><br>Akar' },
+        { tipe: 'pg', teks: '(6) 25% dari 200 adalah...', opsi: [{teks:'50',nilai:'A'},{teks:'25',nilai:'B'},{teks:'75',nilai:'C'},{teks:'100',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-percent" style="font-size:3rem; color:#2563eb;"></i><br>Persen' },
+        { tipe: 'pg', teks: '(7) Sebuah kubus memiliki volume 125 cm³. Panjang rusuknya adalah...', opsi: [{teks:'5 cm',nilai:'A'},{teks:'10 cm',nilai:'B'},{teks:'15 cm',nilai:'C'},{teks:'25 cm',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-cube" style="font-size:3rem; color:#2563eb;"></i><br>Kubus' },
+        { tipe: 'pg', teks: '(8) Gradien garis yang melalui titik (2,3) dan (4,7) adalah...', opsi: [{teks:'2',nilai:'A'},{teks:'1',nilai:'B'},{teks:'0.5',nilai:'C'},{teks:'4',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-chart-line" style="font-size:3rem; color:#2563eb;"></i><br>Gradien' },
+        { tipe: 'pg', teks: '(9) Jika 3x - 5 = 10, maka x = ...', opsi: [{teks:'5',nilai:'A'},{teks:'3',nilai:'B'},{teks:'2',nilai:'C'},{teks:'15',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-times" style="font-size:3rem; color:#2563eb;"></i><br>Persamaan' },
+        { tipe: 'pg', teks: '(10) Nilai rata-rata dari 6, 7, 8, 9, 10 adalah...', opsi: [{teks:'8',nilai:'A'},{teks:'7',nilai:'B'},{teks:'9',nilai:'C'},{teks:'8.5',nilai:'D'}], kunci: 'A', gambar: '<i class="fas fa-chart-bar" style="font-size:3rem; color:#2563eb;"></i><br>Rata-rata' },
+        // PGK (10 soal)
+        { tipe: 'pgk', teks: '(11) Sifat-sifat persegi adalah... (pilih semua)', opsi: [{teks:'Keempat sisi sama panjang',nilai:'A'},{teks:'Sudut siku-siku',nilai:'B'},{teks:'Diagonal berpotongan tegak lurus',nilai:'C'},{teks:'Hanya dua sisi sejajar',nilai:'D'}], kunci: ['A','B','C'], gambar: '<i class="fas fa-square" style="font-size:3rem; color:#2563eb;"></i><br>Persegi' },
+        { tipe: 'pgk', teks: '(12) Bilangan prima di bawah ini adalah... (pilih semua)', opsi: [{teks:'2',nilai:'A'},{teks:'3',nilai:'B'},{teks:'4',nilai:'C'},{teks:'5',nilai:'D'}], kunci: ['A','B','D'], gambar: '<i class="fas fa-hashtag" style="font-size:3rem; color:#2563eb;"></i><br>Prima' },
+        { tipe: 'pgk', teks: '(13) Satuan volume yang benar adalah... (pilih semua)', opsi: [{teks:'m³',nilai:'A'},{teks:'liter',nilai:'B'},{teks:'cm²',nilai:'C'},{teks:'cc',nilai:'D'}], kunci: ['A','B','D'], gambar: '<i class="fas fa-flask" style="font-size:3rem; color:#2563eb;"></i><br>Volume' },
+        { tipe: 'pgk', teks: '(14) Rumus bangun ruang berikut yang benar adalah... (pilih semua)', opsi: [{teks:'Volume kubus = s³',nilai:'A'},{teks:'Volume balok = p × l × t',nilai:'B'},{teks:'Volume tabung = πr²t',nilai:'C'},{teks:'Volume kerucut = 1/3 πr²t',nilai:'D'}], kunci: ['A','B','C','D'], gambar: '<i class="fas fa-shapes" style="font-size:3rem; color:#2563eb;"></i><br>Rumus' },
+        { tipe: 'pgk', teks: '(15) Bilangan genap di bawah ini adalah... (pilih semua)', opsi: [{teks:'2',nilai:'A'},{teks:'4',nilai:'B'},{teks:'6',nilai:'C'},{teks:'9',nilai:'D'}], kunci: ['A','B','C'], gambar: '<i class="fas fa-even" style="font-size:3rem; color:#2563eb;"></i><br>Genap' },
+        { tipe: 'pgk', teks: '(16) Alat ukur panjang adalah... (pilih semua)', opsi: [{teks:'Penggaris',nilai:'A'},{teks:'Meteran',nilai:'B'},{teks:'Jangka sorong',nilai:'C'},{teks:'Termometer',nilai:'D'}], kunci: ['A','B','C'], gambar: '<i class="fas fa-ruler" style="font-size:3rem; color:#2563eb;"></i><br>Alat ukur' },
+        { tipe: 'pgk', teks: '(17) Sifat-sifat segitiga sama sisi adalah... (pilih semua)', opsi: [{teks:'Ketiga sisi sama panjang',nilai:'A'},{teks:'Ketiga sudut sama besar',nilai:'B'},{teks:'Memiliki simetri lipat 3',nilai:'C'},{teks:'Memiliki simetri putar 3',nilai:'D'}], kunci: ['A','B','C','D'], gambar: '<i class="fa-solid fa-triangle" style="font-size:3rem; color:#2563eb;"></i><br>Segitiga' },
+        { tipe: 'pgk', teks: '(18) Bilangan yang merupakan kelipatan 5 adalah... (pilih semua)', opsi: [{teks:'10',nilai:'A'},{teks:'15',nilai:'B'},{teks:'20',nilai:'C'},{teks:'22',nilai:'D'}], kunci: ['A','B','C'], gambar: '<i class="fas fa-five" style="font-size:3rem; color:#2563eb;"></i><br>Kelipatan' },
+        { tipe: 'pgk', teks: '(19) Satuan waktu yang benar adalah... (pilih semua)', opsi: [{teks:'Detik',nilai:'A'},{teks:'Menit',nilai:'B'},{teks:'Jam',nilai:'C'},{teks:'Meter',nilai:'D'}], kunci: ['A','B','C'], gambar: '<i class="fas fa-clock" style="font-size:3rem; color:#2563eb;"></i><br>Waktu' },
+        { tipe: 'pgk', teks: '(20) Sifat-sifat trapesium sama kaki adalah... (pilih semua)', opsi: [{teks:'Sepasang sisi sejajar',nilai:'A'},{teks:'Kaki sama panjang',nilai:'B'},{teks:'Sudut alas sama besar',nilai:'C'},{teks:'Semua sisi sama panjang',nilai:'D'}], kunci: ['A','B','C'], gambar: '<i class="fas fa-shapes" style="font-size:3rem; color:#2563eb;"></i><br>Trapesium' },
+        // BS (10 soal)
+        { tipe: 'bs', teks: '(21) "Bilangan negatif lebih besar dari bilangan positif." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: false, gambar: '<i class="fas fa-minus-circle" style="font-size:3rem; color:#2563eb;"></i><br>Negatif' },
+        { tipe: 'bs', teks: '(22) "Rumus volume tabung adalah πr²t." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-cylinder" style="font-size:3rem; color:#2563eb;"></i><br>Tabung' },
+        { tipe: 'bs', teks: '(23) "Akar pangkat dua dari 144 adalah 12." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-square-root-alt" style="font-size:3rem; color:#2563eb;"></i><br>Akar' },
+        { tipe: 'bs', teks: '(24) "Sudut siku-siku besarnya 90 derajat." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-angle-right" style="font-size:3rem; color:#2563eb;"></i><br>Siku-siku' },
+        { tipe: 'bs', teks: '(25) "1 km = 100 m." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: false, gambar: '<i class="fas fa-ruler" style="font-size:3rem; color:#2563eb;"></i><br>Kilometer' },
+        { tipe: 'bs', teks: '(26) "Lingkaran memiliki simetri lipat tak terhingga." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-circle" style="font-size:3rem; color:#2563eb;"></i><br>Lingkaran' },
+        { tipe: 'bs', teks: '(27) "Hasil dari 2³ adalah 6." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: false, gambar: '<i class="fas fa-cube" style="font-size:3rem; color:#2563eb;"></i><br>Pangkat' },
+        { tipe: 'bs', teks: '(28) "Faktor dari 12 adalah 1,2,3,4,6,12." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-divide" style="font-size:3rem; color:#2563eb;"></i><br>Faktor' },
+        { tipe: 'bs', teks: '(29) "Rumus luas persegi adalah sisi × sisi." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-square" style="font-size:3rem; color:#2563eb;"></i><br>Persegi' },
+        { tipe: 'bs', teks: '(30) "Bilangan 0 adalah bilangan genap." Pernyataan tersebut...', opsi: [{teks:'Benar',nilai:true},{teks:'Salah',nilai:false}], kunci: true, gambar: '<i class="fas fa-circle" style="font-size:3rem; color:#2563eb;"></i><br>Nol' },
+    ];
+
+    // ====================  LOGIN & TOKEN ====================
+    const loginPage = document.getElementById('loginPage');
+    const homePage = document.getElementById('homePage');
+    const tokenDisplay = document.getElementById('tokenDisplay');
+    const tokenInput = document.getElementById('tokenInput');
+    const namaInput = document.getElementById('namaInput');
+    const btnLogin = document.getElementById('btnLogin');
+    const loginError = document.getElementById('loginError');
+    const namaDisplay = document.getElementById('namaDisplay');
+    const indoUser = document.getElementById('indoUser');
+    const matUser = document.getElementById('matUser');
+
+    function generateToken() {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let token = '';
+        for (let i = 0; i < 6; i++) {
+            token += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return token;
+    }
+
+    let currentToken = generateToken();
+    tokenDisplay.textContent = currentToken;
+
+    const tglSelect = document.getElementById('tgl');
+    const blnSelect = document.getElementById('bln');
+    const thnSelect = document.getElementById('thn');
+
+    for (let i = 1; i <= 31; i++) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        tglSelect.appendChild(option);
+    }
+    for (let i = 1; i <= 12; i++) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        blnSelect.appendChild(option);
+    }
+    for (let i = 1980; i <= 2010; i++) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        thnSelect.appendChild(option);
+    }
+
+    btnLogin.addEventListener('click', () => {
+        const inputToken = tokenInput.value.trim().toUpperCase();
+        const nama = namaInput.value.trim();
+        const gender = document.querySelector('input[name="gender"]:checked')?.value;
+        const tgl = tglSelect.value;
+        const bln = blnSelect.value;
+        const thn = thnSelect.value;
+
+        if (inputToken === '') {
+            loginError.textContent = 'Token harus diisi.';
+            return;
+        }
+        if (nama === '') {
+            loginError.textContent = 'Nama harus diisi.';
+            return;
+        }
+        if (!gender) {
+            loginError.textContent = 'Pilih jenis kelamin.';
+            return;
+        }
+        if (!tgl || !bln || !thn) {
+            loginError.textContent = 'Tanggal lahir harus lengkap.';
+            return;
+        }
+        if (inputToken !== currentToken) {
+            loginError.textContent = 'Token salah. Silakan coba lagi.';
+            return;
+        }
+
+        const userData = { nama, gender, tgl, bln, thn };
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+        loginError.textContent = '';
+        namaDisplay.textContent = nama;
+        indoUser.textContent = `${nama} (${gender}) - ${tgl}/${bln}/${thn}`;
+        matUser.textContent = `${nama} (${gender}) - ${tgl}/${bln}/${thn}`;
+
+        loginPage.style.display = 'none';
+        homePage.style.display = 'block';
+    });
+
+    // ====================  STATE UJIAN ====================
+    let isLocked = false;
+    let currentMapel = null;
+    let jawabanIndo = new Array(30).fill(null);
+    let jawabanMat = new Array(30).fill(null);
+    let currentExitKey = '';
+    let selectedMapel = null;
+    let pendingSubmitMapel = null;
+
+    let timerInterval = null;
+    let waktuTersisa = 90 * 60;
+    const timerIndo = document.getElementById('indoTimer');
+    const timerMat = document.getElementById('matTimer');
+
+    const modalSiap = document.getElementById('modalSiap');
+    const modalSelesai = document.getElementById('modalSelesai');
+    const btnMulaiUjian = document.getElementById('btnMulaiUjian');
+    const btnBatalSelesai = document.getElementById('batalSelesai');
+    const btnKonfirmasiSelesai = document.getElementById('konfirmasiSelesai');
+    const indoPage = document.getElementById('indoPage');
+    const matPage = document.getElementById('matPage');
+    const btnIndo = document.getElementById('btnIndo');
+    const btnMat = document.getElementById('btnMat');
+    const submitIndo = document.getElementById('submitIndo');
+    const submitMat = document.getElementById('submitMat');
+    const indoSoalContainer = document.getElementById('indoSoalContainer');
+    const matSoalContainer = document.getElementById('matSoalContainer');
+    const indoHasilDiv = document.getElementById('indoHasil');
+    const matHasilDiv = document.getElementById('matHasil');
+
+    if (sessionStorage.getItem('examActive')) {
+        jawabanIndo.fill(null);
+        jawabanMat.fill(null);
+        sessionStorage.removeItem('examActive');
+    }
+
+    function setLock(lock) {
+        isLocked = lock;
+        if (lock) {
+            window.onbeforeunload = (e) => {
+                e.preventDefault();
+                e.returnValue = '⚠️ Ujian masih berlangsung! Gunakan KEY untuk keluar.';
+                return '⚠️ Ujian masih berlangsung! Gunakan KEY untuk keluar.';
+            };
+            history.pushState(null, null, location.href);
+            window.addEventListener('popstate', preventBack);
+        } else {
+            window.onbeforeunload = null;
+            window.removeEventListener('popstate', preventBack);
+        }
+    }
+
+    function preventBack() {
+        if (isLocked) {
+            history.pushState(null, null, location.href);
+            alert('🚫 Tombol back diblokir!');
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (!isLocked) return;
+        const key = e.key;
+        const ctrl = e.ctrlKey;
+        const shift = e.shiftKey;
+        const alt = e.altKey;
+        const blocked = [
+            key === 'F12',
+            ctrl && shift && (key === 'I' || key === 'J' || key === 'C'),
+            ctrl && key === 'U',
+            key === 'F5',
+            ctrl && (key === 'r' || key === 'R'),
+            ctrl && shift && (key === 'r' || key === 'R'),
+            ctrl && (key === 'w' || key === 'W'),
+            ctrl && (key === 'f4' || key === 'F4'),
+            alt && (key === 'F4'),
+            ctrl && (key === 't' || key === 'T' || key === 'n' || key === 'N'),
+            ctrl && (key === 'p' || key === 'P'),
+            ctrl && (key === 's' || key === 'S'),
+            alt && (key === 'ArrowLeft' || key === 'ArrowRight'),
+            key === 'PrintScreen'
+        ];
+        if (blocked.includes(true)) {
+            e.preventDefault();
+            alert('🔒 Akses ditolak!');
+            return false;
+        }
+        if (ctrl || alt) {
+            e.preventDefault();
+            alert('🔒 Tombol kombinasi diblokir.');
+            return false;
+        }
+    });
+
+    document.addEventListener('contextmenu', (e) => { if (isLocked) e.preventDefault(); });
+    document.addEventListener('copy', (e) => { if (isLocked) e.preventDefault(); });
+    document.addEventListener('paste', (e) => { if (isLocked) e.preventDefault(); });
+
+    setInterval(() => {
+        if (isLocked) {
+            const widthThreshold = window.outerWidth - window.innerWidth > 200;
+            const heightThreshold = window.outerHeight - window.innerHeight > 200;
+            if (widthThreshold || heightThreshold) {
+                alert('🔒 DevTools terdeteksi!');
+                document.body.innerHTML = '<h1 style="color:red;padding:50px;">Akses ditutup.</h1>';
+            }
+        }
+    }, 1000);
+
+    document.addEventListener('visibilitychange', () => {
+        if (isLocked && document.hidden) {
+            alert('⚠️ Anda meninggalkan tab ujian!');
+        }
+    });
+
+    function openFullscreen() {
+        let elem = document.documentElement;
+        if (elem.requestFullscreen) elem.requestFullscreen();
+        else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+        else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
+    }
+
+    function exitFullscreen() {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+    }
+
+    function formatWaktu(detik) {
+        let jam = Math.floor(detik / 3600);
+        let menit = Math.floor((detik % 3600) / 60);
+        let det = detik % 60;
+        return `${jam.toString().padStart(2,'0')}:${menit.toString().padStart(2,'0')}:${det.toString().padStart(2,'0')}`;
+    }
+
+    function mulaiTimer(mapel) {
+        if (timerInterval) clearInterval(timerInterval);
+        waktuTersisa = 90 * 60;
+        const timerElement = (mapel === 'indo') ? timerIndo : timerMat;
+        timerElement.textContent = formatWaktu(waktuTersisa);
+
+        timerInterval = setInterval(() => {
+            if (waktuTersisa <= 0) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                if (mapel === 'indo') paksaSubmit('indo');
+                else paksaSubmit('mat');
+                return;
+            }
+            waktuTersisa--;
+            timerElement.textContent = formatWaktu(waktuTersisa);
+        }, 1000);
+    }
+
+    function hentikanTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = null;
+    }
+
+    function paksaSubmit(mapel) {
+        if (mapel === 'indo') {
+            submitIndo.style.display = 'none';
+            tampilkanHasil('indo', indoHasilDiv, soalIndo, jawabanIndo);
+        } else {
+            submitMat.style.display = 'none';
+            tampilkanHasil('mat', matHasilDiv, soalMat, jawabanMat);
+        }
+    }
+
+    function renderSoal(container, mapel, soalArray, jawabanArray) {
+        let html = '';
+        soalArray.forEach((soal, idx) => {
+            const nomor = idx + 1;
+            let tipeLabel = soal.tipe === 'pg' ? 'Pilihan Ganda' : (soal.tipe === 'pgk' ? 'PG Kompleks' : 'Benar/Salah');
+            html += `<div class="soal-card" data-nomor="${idx}" data-tipe="${soal.tipe}">`;
+            html += `<div class="soal-header"><div class="soal-nomor">${nomor}</div><div class="soal-tipe">${tipeLabel}</div></div>`;
+            if (soal.gambar) html += `<div class="soal-gambar">${soal.gambar}</div>`;
+            html += `<div class="soal-teks">${soal.teks}</div>`;
+            html += `<div class="opsi">`;
+
+            soal.opsi.forEach((opt, optIdx) => {
+                const inputType = (soal.tipe === 'pgk') ? 'checkbox' : 'radio';
+                const name = `opt_${mapel}_${idx}`;
+                let checked = false;
+                if (jawabanArray[idx] !== null) {
+                    if (soal.tipe === 'pgk') checked = jawabanArray[idx].includes(opt.nilai);
+                    else if (soal.tipe === 'pg') checked = (jawabanArray[idx] === opt.nilai);
+                    else checked = (jawabanArray[idx] === opt.nilai);
+                }
+                html += `<div class="opsi-item"><input type="${inputType}" name="${name}" value="${opt.nilai}" id="${name}_${optIdx}" ${checked ? 'checked' : ''}><label for="${name}_${optIdx}">${opt.teks}</label></div>`;
+            });
+            html += `</div></div>`;
+        });
+        container.innerHTML = html;
+
+        container.querySelectorAll('.soal-card').forEach((item) => {
+            const nomor = parseInt(item.dataset.nomor);
+            const tipe = item.dataset.tipe;
+            const opsiDiv = item.querySelector('.opsi');
+            opsiDiv.addEventListener('change', (e) => {
+                if (tipe === 'pgk') {
+                    const checkedValues = [];
+                    opsiDiv.querySelectorAll('input[type=checkbox]:checked').forEach(cb => checkedValues.push(cb.value));
+                    if (mapel === 'indo') jawabanIndo[nomor] = checkedValues;
+                    else jawabanMat[nomor] = checkedValues;
+                } else {
+                    const selected = opsiDiv.querySelector('input[type=radio]:checked');
+                    if (selected) {
+                        const nilai = selected.value;
+                        if (tipe === 'bs') {
+                            if (mapel === 'indo') jawabanIndo[nomor] = (nilai === 'true');
+                            else jawabanMat[nomor] = (nilai === 'true');
+                        } else {
+                            if (mapel === 'indo') jawabanIndo[nomor] = nilai;
+                            else jawabanMat[nomor] = nilai;
+                        }
+                    }
+                }
+            });
+        });
+    }
+
+    function hitungSkor(soalArray, jawabanArray) {
+        let benar = 0;
+        for (let i = 0; i < soalArray.length; i++) {
+            const soal = soalArray[i];
+            const jawab = jawabanArray[i];
+            if (jawab === null) continue;
+            if (soal.tipe === 'pg') {
+                if (jawab === soal.kunci) benar++;
+            } else if (soal.tipe === 'pgk') {
+                const kunciSet = new Set(soal.kunci);
+                const jawabSet = new Set(jawab);
+                if (kunciSet.size === jawabSet.size && [...kunciSet].every(k => jawabSet.has(k))) benar++;
+            } else {
+                if (jawab === soal.kunci) benar++;
+            }
+        }
+        return benar;
+    }
+
+    function tampilkanHasil(mapel, hasilDiv, soalArray, jawabanArray) {
+        hentikanTimer();
+        const skor = hitungSkor(soalArray, jawabanArray);
+        const totalSoal = soalArray.length;
+        const persen = (skor / totalSoal * 100).toFixed(2);
+        const randomKey = 'HANZZ-' + Math.random().toString(36).substring(2,10).toUpperCase();
+        currentExitKey = randomKey;
+
+        sessionStorage.removeItem('examActive');
+
+        let html = `
+            <div class="nilai-box">Skor: ${skor}/${totalSoal} (${persen}%)</div>
+            <div class="key-area">
+                <div style="font-size:1.3rem;">🔑 KELUAR KEY</div>
+                <div class="key-string">${randomKey}</div>
+                <button class="copyKeyBtn" style="background:#2563eb; color:white; border:none; padding:12px 30px; border-radius:40px; margin-top:10px; cursor:pointer;">📋 Salin Key</button>
+            </div>
+            <div class="exit-form">
+                <input type="text" id="exitKeyInput" placeholder="masukkan key keluar">
+                <button id="exitBtn">🚪 KELUAR UJIAN</button>
+            </div>
+            <div class="peringatan">⚠️ Key salah tidak bisa keluar</div>
+        `;
+        hasilDiv.innerHTML = html;
+        hasilDiv.style.display = 'block';
+
+        document.querySelectorAll(`#${mapel}Page .opsi input`).forEach(inp => inp.disabled = true);
+
+        hasilDiv.querySelector('.copyKeyBtn').addEventListener('click', () => {
+            navigator.clipboard.writeText(randomKey).then(() => alert('Key disalin!'));
+        });
+
+        const exitBtn = hasilDiv.querySelector('#exitBtn');
+        const exitInput = hasilDiv.querySelector('#exitKeyInput');
+        exitBtn.addEventListener('click', () => {
+            if (exitInput.value.trim() === currentExitKey) {
+                alert('✅ Key benar. Kembali ke home.');
+                exitFullscreen();
+                setLock(false);
+                currentMapel = null;
+                jawabanIndo.fill(null);
+                jawabanMat.fill(null);
+                homePage.style.display = 'block';
+                indoPage.style.display = 'none';
+                matPage.style.display = 'none';
+                indoHasilDiv.innerHTML = '';
+                matHasilDiv.innerHTML = '';
+                indoHasilDiv.style.display = 'none';
+                matHasilDiv.style.display = 'none';
+                submitIndo.style.display = 'block';
+                submitMat.style.display = 'block';
+                renderSoal(indoSoalContainer, 'indo', soalIndo, jawabanIndo);
+                renderSoal(matSoalContainer, 'mat', soalMat, jawabanMat);
+                timerIndo.textContent = '01:30:00';
+                timerMat.textContent = '01:30:00';
+            } else {
+                alert('❌ Key salah!');
+            }
+        });
+    }
+
+    btnIndo.addEventListener('click', () => {
+        selectedMapel = 'indo';
+        modalSiap.classList.add('active');
+    });
+
+    btnMat.addEventListener('click', () => {
+        selectedMapel = 'mat';
+        modalSiap.classList.add('active');
+    });
+
+    btnMulaiUjian.addEventListener('click', () => {
+        modalSiap.classList.remove('active');
+        openFullscreen();
+
+        homePage.style.display = 'none';
+        if (selectedMapel === 'indo') {
+            indoPage.style.display = 'block';
+            matPage.style.display = 'none';
+            currentMapel = 'indo';
+            renderSoal(indoSoalContainer, 'indo', soalIndo, jawabanIndo);
+            mulaiTimer('indo');
+        } else {
+            indoPage.style.display = 'none';
+            matPage.style.display = 'block';
+            currentMapel = 'mat';
+            renderSoal(matSoalContainer, 'mat', soalMat, jawabanMat);
+            mulaiTimer('mat');
+        }
+
+        sessionStorage.setItem('examActive', currentMapel);
+        setLock(true);
+    });
+
+    function showModalSelesai(mapel) {
+        pendingSubmitMapel = mapel;
+        modalSelesai.classList.add('active');
+    }
+
+    btnBatalSelesai.addEventListener('click', () => {
+        modalSelesai.classList.remove('active');
+        pendingSubmitMapel = null;
+    });
+
+    btnKonfirmasiSelesai.addEventListener('click', () => {
+        modalSelesai.classList.remove('active');
+        if (pendingSubmitMapel === 'indo') {
+            submitIndo.style.display = 'none';
+            hentikanTimer();
+            tampilkanHasil('indo', indoHasilDiv, soalIndo, jawabanIndo);
+        } else if (pendingSubmitMapel === 'mat') {
+            submitMat.style.display = 'none';
+            hentikanTimer();
+            tampilkanHasil('mat', matHasilDiv, soalMat, jawabanMat);
+        }
+        pendingSubmitMapel = null;
+    });
+
+    submitIndo.addEventListener('click', () => {
+        if (currentMapel !== 'indo') return;
+        showModalSelesai('indo');
+    });
+
+    submitMat.addEventListener('click', () => {
+        if (currentMapel !== 'mat') return;
+        showModalSelesai('mat');
+    });
+
+    // Render awal soal
+    renderSoal(indoSoalContainer, 'indo', soalIndo, jawabanIndo);
+    renderSoal(matSoalContainer, 'mat', soalMat, jawabanMat);
+})();
+</script>
+</body>
+</html>
